@@ -69,4 +69,4 @@ prompts/convergence_view_prompt.md
 
 ## License
 
-No license has been selected yet. Treat this repository as public WIP concept material unless and until a license is added.
+This project is released under the MIT License. See [`LICENSE`](LICENSE).
