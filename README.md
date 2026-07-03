@@ -47,7 +47,7 @@ This repository currently contains the public-facing concept, proposed architect
 
 ## Non-clinical disclaimer
 
-BioSignals is a research-navigation and mechanism-mapping prototype, not a diagnostic or clinical decision tool. It should not be used to diagnose, treat, prevent, or make medical decisions for any disease or individual patient.
+BioSignals is a research-navigation and mechanism-mapping prototype, not a diagnostic, therapeutic, or clinical decision-support tool. It should not be used to diagnose, treat, prevent, or make medical decisions for any disease or individual patient.
 
 ## Future direction
 
