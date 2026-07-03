@@ -1,0 +1,25 @@
+# Local/editor files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Scratch/output files
+scratch/
+tmp/
+outputs/

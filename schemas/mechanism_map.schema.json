@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/biosignals/mechanism_map.schema.json",
+  "title": "BioSignals Mechanism Map",
+  "description": "Draft schema for an auditable disease mechanism map.",
+  "type": "object",
+  "required": ["map_id", "disease_area", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "map_id": {
+      "type": "string",
+      "description": "Stable identifier for this mechanism map."
+    },
+    "disease_area": {
+      "type": "string",
+      "description": "Disease or research area covered by the map."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short non-clinical summary of the mechanism map."
+    },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" },
+      "minItems": 1
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "convergence_tags": {
+      "type": "array",
+      "description": "Map-level tags identifying recurring convergence themes.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "source_refs": {
+      "type": "array",
+      "description": "User-supplied source identifiers used to build the map.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "label", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "gene",
+            "protein",
+            "pathway",
+            "cell_type",
+            "cellular_process",
+            "molecular_process",
+            "tissue_process",
+            "biomarker",
+            "phenotype",
+            "model_system",
+            "intervention_target",
+            "other"
+          ]
+        },
+        "description": { "type": "string" },
+        "source_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "convergence_tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": [
+        "id",
+        "source",
+        "target",
+        "relationship_type",
+        "evidence_strength",
+        "uncertainty",
+        "source_refs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "source": { "type": "string" },
+        "target": { "type": "string" },
+        "relationship_type": {
+          "type": "string",
+          "enum": [
+            "increases",
+            "decreases",
+            "activates",
+            "inhibits",
+            "contributes_to",
+            "associated_with",
+            "may_cause",
+            "may_protect_against",
+            "context_dependent",
+            "contradicts",
+            "unknown"
+          ]
+        },
+        "evidence_strength": {
+          "type": "string",
+          "enum": ["very_low", "low", "moderate", "high", "mixed"]
+        },
+        "uncertainty": {
+          "type": "string",
+          "description": "Plain-language note explaining uncertainty, caveats, or limits."
+        },
+        "source_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "convergence_tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

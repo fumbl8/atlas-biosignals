@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/biosignals/evidence_card.schema.json",
+  "title": "BioSignals Evidence Card",
+  "description": "Draft schema for claim-level biomedical evidence captured from user-supplied sources.",
+  "type": "object",
+  "required": [
+    "claim",
+    "biological_entities",
+    "relationship_type",
+    "evidence_type",
+    "confidence",
+    "caveats",
+    "contradictions",
+    "source_refs",
+    "next_questions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "claim": {
+      "type": "string",
+      "description": "Concise statement of the extracted claim."
+    },
+    "biological_entities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "relationship_type": {
+      "type": "string",
+      "enum": [
+        "causal_claim",
+        "associative_claim",
+        "mechanistic_hypothesis",
+        "biomarker_association",
+        "contextual_causal_hypothesis",
+        "negative_finding",
+        "contradictory_finding",
+        "unknown"
+      ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "human_observational",
+        "human_genetic",
+        "clinical_trial",
+        "animal_model",
+        "cell_model",
+        "organoid_or_ipsc_model",
+        "omics_analysis",
+        "pathway_analysis",
+        "review_or_hypothesis",
+        "illustrative_sample_only",
+        "other"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["very_low", "low", "moderate", "high", "mixed"]
+    },
+    "caveats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "next_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
