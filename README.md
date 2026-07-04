@@ -1,8 +1,10 @@
 # BioSignals: Disease Mechanism Cartographer
 
-**Mapping fragmented biomedical evidence into auditable disease mechanism maps.**
+**WIP Claude/life-sciences prototype for mapping biomedical evidence into auditable disease-mechanism maps.**
 
-BioSignals is an early WIP v0 prototype for helping early-stage or cross-disciplinary life-sciences researchers enter a complex disease area without getting trapped in disconnected paper summaries. The project explores how Claude can turn user-supplied biomedical literature into inspectable mechanism maps: biological signals, proposed causal relationships, evidence strength, contradictions, convergence points, and unresolved research questions.
+> **Status:** Early WIP / hackathon v0. This is a small public concept scaffold, not a deployed research platform or validated biomedical system.
+
+BioSignals is an early prototype by a biology educator and independent AI systems builder. It explores whether Claude can help organize user-supplied biomedical literature into inspectable mechanism maps: biological signals, proposed causal relationships, evidence strength, contradictions, convergence points, and unresolved research questions.
 
 The initial demo target is **ALS / neurodegeneration**.
 
@@ -26,7 +28,7 @@ Complex diseases are studied across fragmented papers, pathways, biomarkers, mod
 
 ## Proposed solution
 
-BioSignals uses Claude to extract structured evidence from user-supplied papers, abstracts, or notes and organize it into a mechanism map.
+BioSignals is intended to use Claude prompts and lightweight structured schemas to extract evidence from user-supplied papers, abstracts, or notes and organize it into a mechanism map.
 
 The intended output is not a single polished answer. It is an auditable research-navigation layer where:
 
