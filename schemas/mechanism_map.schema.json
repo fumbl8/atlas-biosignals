@@ -2,9 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.org/biosignals/mechanism_map.schema.json",
   "title": "BioSignals Mechanism Map",
-  "description": "Draft schema for an auditable disease mechanism map.",
+  "description": "Draft schema for an auditable disease mechanism map built from user-supplied sources.",
   "type": "object",
-  "required": ["map_id", "disease_area", "nodes", "edges"],
+  "required": ["map_id", "disease_area", "prototype_status", "nodes", "edges"],
   "additionalProperties": false,
   "properties": {
     "map_id": {
@@ -14,6 +14,20 @@
     "disease_area": {
       "type": "string",
       "description": "Disease or research area covered by the map."
+    },
+    "prototype_status": {
+      "type": "string",
+      "description": "WIP status note for the generated map."
+    },
+    "intended_use": {
+      "type": "string",
+      "description": "Non-clinical research-navigation purpose of the map."
+    },
+    "not_for": {
+      "type": "array",
+      "description": "Explicit exclusions such as diagnosis, treatment, prevention, prognosis, or clinical decision support.",
+      "items": { "type": "string" },
+      "uniqueItems": true
     },
     "summary": {
       "type": "string",
@@ -28,11 +42,21 @@
       "type": "array",
       "items": { "$ref": "#/$defs/edge" }
     },
-    "convergence_tags": {
+    "convergence_patterns": {
       "type": "array",
-      "description": "Map-level tags identifying recurring convergence themes.",
+      "description": "Map-level areas where independent evidence streams appear to point toward shared failure patterns.",
       "items": { "type": "string" },
       "uniqueItems": true
+    },
+    "contradiction_notes": {
+      "type": "array",
+      "description": "Map-level contradictions or context-dependent disagreements to inspect further.",
+      "items": { "type": "string" }
+    },
+    "unresolved_questions": {
+      "type": "array",
+      "description": "Research questions that would reduce map uncertainty.",
+      "items": { "type": "string" }
     },
     "source_refs": {
       "type": "array",
@@ -59,6 +83,7 @@
             "cellular_process",
             "molecular_process",
             "tissue_process",
+            "disease_process",
             "biomarker",
             "phenotype",
             "model_system",
@@ -113,7 +138,7 @@
         },
         "evidence_strength": {
           "type": "string",
-          "enum": ["very_low", "low", "moderate", "high", "mixed"]
+          "enum": ["very_low", "low", "low_to_moderate", "moderate", "high", "mixed"]
         },
         "uncertainty": {
           "type": "string",
@@ -128,6 +153,14 @@
           "type": "array",
           "items": { "type": "string" },
           "uniqueItems": true
+        },
+        "contradictions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unresolved_questions": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       }
     }

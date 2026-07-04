@@ -24,15 +24,16 @@ For each contradiction or tension, capture:
    - assay method,
    - dosage or timing,
    - patient subtype,
-   - compensatory vs causal mechanism,
+   - compensatory vs. causal mechanism,
    - statistical power,
+   - incomplete evidence,
    - unclear.
 5. What evidence would help resolve the contradiction.
-6. Whether the contradiction affects a mechanism-map edge, node, confidence score, or convergence tag.
+6. Whether the contradiction affects a mechanism-map edge, node, evidence-strength rating, or convergence tag.
 
 ## Output format
 
-Return JSON only.
+Return JSON only. Each item in `contradiction_ledger` should follow `schemas/contradiction_ledger.schema.json`.
 
 ```json
 {
@@ -47,7 +48,7 @@ Return JSON only.
       ],
       "possible_explanations": [],
       "affected_map_elements": [],
-      "uncertainty_level": "low | moderate | high",
+      "uncertainty_level": "high",
       "resolution_next_steps": []
     }
   ]
@@ -61,3 +62,4 @@ Return JSON only.
 - Preserve nuance: two claims can both be true in different contexts.
 - Mark unresolved contradictions clearly.
 - Prefer explanations that can be tested or checked in follow-up research.
+- Do not convert contradiction resolution into clinical advice.

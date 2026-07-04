@@ -15,20 +15,20 @@ Create a convergence view with:
 1. A short title for each convergence pattern.
 2. The biological mechanisms involved.
 3. The proposed shared failure pattern.
-4. Evidence streams supporting the pattern.
+4. Evidence streams supporting the pattern, with source references.
 5. Contradictions or caveats that weaken or complicate the pattern.
-6. Confidence level:
-   - very_low,
-   - low,
-   - moderate,
-   - high,
-   - mixed.
+6. Evidence strength using one of these exact enum values:
+   - `very_low`
+   - `low`
+   - `moderate`
+   - `high`
+   - `mixed`
 7. Research next steps that would strengthen, weaken, or clarify the convergence pattern.
 8. A plain-language, non-clinical explanation.
 
 ## Output format
 
-Return JSON only.
+Return JSON only. Each item in `convergence_view` should follow `schemas/convergence_view.schema.json`.
 
 ```json
 {
@@ -44,7 +44,7 @@ Return JSON only.
         }
       ],
       "contradictions_or_caveats": [],
-      "confidence": "",
+      "evidence_strength": "very_low",
       "research_next_steps": [],
       "plain_language_brief": ""
     }
@@ -59,3 +59,4 @@ Return JSON only.
 - Identify convergence without erasing contradiction.
 - Separate strong evidence from plausible mechanistic speculation.
 - Keep the output research-focused and non-clinical.
+- Do not present convergence patterns as diagnosis, treatment rationale, or medical advice.

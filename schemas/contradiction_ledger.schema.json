@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/biosignals/contradiction_ledger.schema.json",
+  "title": "BioSignals Contradiction Ledger Entry",
+  "description": "Draft schema for tracking contradictions, tensions, and context-dependent disagreements across supplied evidence.",
+  "type": "object",
+  "required": [
+    "topic",
+    "conflicting_claims",
+    "possible_explanations",
+    "affected_map_elements",
+    "uncertainty_level",
+    "resolution_next_steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "topic": { "type": "string" },
+    "conflicting_claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim", "source_refs"],
+        "additionalProperties": false,
+        "properties": {
+          "claim": { "type": "string" },
+          "source_refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "possible_explanations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "affected_map_elements": {
+      "type": "array",
+      "description": "Node IDs, edge IDs, evidence-card IDs, or convergence tags affected by this contradiction.",
+      "items": { "type": "string" }
+    },
+    "uncertainty_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "high"]
+    },
+    "resolution_next_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

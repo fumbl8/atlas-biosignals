@@ -9,7 +9,7 @@
     "biological_entities",
     "relationship_type",
     "evidence_type",
-    "confidence",
+    "evidence_strength",
     "caveats",
     "contradictions",
     "source_refs",
@@ -56,9 +56,13 @@
         "other"
       ]
     },
-    "confidence": {
+    "evidence_strength": {
       "type": "string",
       "enum": ["very_low", "low", "moderate", "high", "mixed"]
+    },
+    "context": {
+      "type": "string",
+      "description": "Model system, disease stage, species, cell type, assay, tissue, population, or other scope limit."
     },
     "caveats": {
       "type": "array",

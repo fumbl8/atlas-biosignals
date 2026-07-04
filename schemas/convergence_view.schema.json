@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/biosignals/convergence_view.schema.json",
+  "title": "BioSignals Convergence View Entry",
+  "description": "Draft schema for a map-level convergence pattern across independent evidence streams.",
+  "type": "object",
+  "required": [
+    "title",
+    "mechanisms",
+    "shared_failure_pattern",
+    "supporting_evidence_streams",
+    "contradictions_or_caveats",
+    "evidence_strength",
+    "research_next_steps",
+    "plain_language_brief"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "mechanisms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "shared_failure_pattern": {
+      "type": "string",
+      "description": "Non-clinical description of the proposed shared mechanism or failure pattern."
+    },
+    "supporting_evidence_streams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["summary", "source_refs"],
+        "additionalProperties": false,
+        "properties": {
+          "summary": { "type": "string" },
+          "source_refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "contradictions_or_caveats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence_strength": {
+      "type": "string",
+      "enum": ["very_low", "low", "moderate", "high", "mixed"]
+    },
+    "research_next_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "plain_language_brief": {
+      "type": "string",
+      "description": "Clear, non-clinical explanation for research communication."
+    }
+  }
+}
